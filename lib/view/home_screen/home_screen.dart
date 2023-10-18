@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   description: note.description,
                   title: note.title,
                   date: date,
-                  color: note.selectColor,
+                  color: note.color,
                 );
               },
             ),
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
             description: '',
             date: DateTime.now(),
             ////
-            selectColor: selectedColor.value,
+            color: selectedColor.value,
           );
 
     _titleController.text = newNote.title;

@@ -5,23 +5,25 @@ part 'my_name_model.g.dart';
 @HiveType(typeId: 0)
 class MyNameModel {
   @HiveField(0)
-  String title;
+  late String title;
   @HiveField(1)
-  String description;
+  late String description;
   @HiveField(2)
-  DateTime date;
+  late DateTime date;
   @HiveField(3)
-  int selectColor;
+  late int color;
 
-  @HiveField(4)
-  int? key;
+  MyNameModel({
+    required this.title,
+    required this.description,
+    required this.date,
+    required this.color,
+  });
 
-  MyNameModel(
-      {required this.selectColor,
-      required this.date,
-      required this.description,
-      required this.title,
-      this.key});
-
-  static copy(MyNameModel existingNote) {}
+  MyNameModel.copy(MyNameModel other) {
+    title = other.title;
+    description = other.description;
+    date = other.date;
+    color = other.color;
+  }
 }

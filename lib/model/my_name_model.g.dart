@@ -17,18 +17,17 @@ class MyNameModelAdapter extends TypeAdapter<MyNameModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MyNameModel(
-      selectColor: fields[3] as int,
-      date: fields[2] as DateTime,
-      description: fields[1] as String,
       title: fields[0] as String,
-      key: fields[4] as int?,
+      description: fields[1] as String,
+      date: fields[2] as DateTime,
+      color: fields[3] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, MyNameModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -36,9 +35,7 @@ class MyNameModelAdapter extends TypeAdapter<MyNameModel> {
       ..writeByte(2)
       ..write(obj.date)
       ..writeByte(3)
-      ..write(obj.selectColor)
-      ..writeByte(4)
-      ..write(obj.key);
+      ..write(obj.color);
   }
 
   @override
