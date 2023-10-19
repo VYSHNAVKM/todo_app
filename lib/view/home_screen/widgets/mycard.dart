@@ -46,7 +46,6 @@ class _MyCardState extends State<MyCard> {
           decoration: BoxDecoration(
               color: Color(widget.color),
               borderRadius: BorderRadius.circular(20)),
-          height: 200,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
@@ -73,10 +72,9 @@ class _MyCardState extends State<MyCard> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: Text(widget.description,
                       textAlign: TextAlign.justify,
-                      maxLines: 4,
+                      maxLines: 3,
                       overflow: TextOverflow.fade,
-                      style:
-                          TextStyle(color: Colors.grey.shade800, fontSize: 20)),
+                      style: TextStyle(color: Colors.black, fontSize: 20)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

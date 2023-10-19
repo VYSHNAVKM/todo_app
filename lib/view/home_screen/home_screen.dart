@@ -23,9 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Color selectedColor = Colors.grey;
 
   List<Color> colorOptions = [
-    Colors.red,
-    Colors.black,
-    Colors.blue,
+    Color.fromARGB(255, 245, 225, 94),
+    Color.fromARGB(255, 253, 145, 67),
+    Color.fromARGB(255, 127, 77, 77),
   ];
 
   @override
