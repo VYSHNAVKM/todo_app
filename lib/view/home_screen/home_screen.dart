@@ -49,7 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: Text(
           "NOTE",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.black,
       ),
@@ -61,27 +62,46 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontSize: 20,
                       fontWeight: FontWeight.w400)),
             )
-          : ListView.builder(
-              itemCount: _notes.length,
-              itemBuilder: (context, index) {
-                final dateFormatter = DateFormat('dd-MM-yyyy');
-                final note = _notes[index];
-                final date = dateFormatter.format(note.date.toLocal());
-                return MyCard(
-                  onEditPressed: () {
-                    existingNoteIndex = index;
-                    _addOrEditNote(context, existingNote: note);
-                  },
-                  onDeletePressed: () async {
-                    await _noteController.deleteEvent(index);
-                    _loadNotes();
-                  },
-                  description: note.description,
-                  title: note.title,
-                  date: date,
-                  color: note.color,
-                );
-              },
+          : Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SearchBar(
+                    leading: Icon(Icons.search),
+                    hintText: 'Search',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _notes.length,
+                    itemBuilder: (context, index) {
+                      final dateFormatter = DateFormat('dd-MM-yyyy');
+                      final note = _notes[index];
+                      final date = dateFormatter.format(note.date.toLocal());
+                      return MyCard(
+                        onEditPressed: () {
+                          existingNoteIndex = index;
+                          _addOrEditNote(context, existingNote: note);
+                        },
+                        onDeletePressed: () async {
+                          await _noteController.deleteEvent(index);
+                          _loadNotes();
+                        },
+                        description: note.description,
+                        title: note.title,
+                        date: date,
+                        color: note.color,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
@@ -89,7 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
           existingNoteIndex = -1;
           _addOrEditNote(context);
         },
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }

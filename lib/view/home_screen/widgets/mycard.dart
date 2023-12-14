@@ -45,7 +45,8 @@ class _MyCardState extends State<MyCard> {
         child: Container(
           decoration: BoxDecoration(
               color: Color(widget.color),
-              borderRadius: BorderRadius.circular(20)),
+              border: Border.all(color: Colors.black, width: 3),
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(70))),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: Column(
@@ -57,14 +58,7 @@ class _MyCardState extends State<MyCard> {
                     Text(
                       widget.title,
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.delete,
-                        size: 40,
-                      ),
-                      onPressed: widget.onDeletePressed,
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -73,27 +67,13 @@ class _MyCardState extends State<MyCard> {
                   child: Text(widget.description,
                       textAlign: TextAlign.justify,
                       maxLines: 3,
-                      overflow: TextOverflow.fade,
-                      style: TextStyle(color: Colors.black, fontSize: 20)),
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.black, fontSize: 18)),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: widget.onEditPressed,
-                          icon: Icon(
-                            Icons.edit,
-                            size: 40,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       widget.date,
@@ -102,7 +82,51 @@ class _MyCardState extends State<MyCard> {
                           fontSize: 24,
                           fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border:
+                                  Border.all(color: Colors.black, width: 5)),
+                          child: Center(
+                            child: IconButton(
+                              onPressed: widget.onEditPressed,
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border:
+                                  Border.all(color: Colors.black, width: 5)),
+                          child: Center(
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                              onPressed: widget.onDeletePressed,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [],
                 ),
               ],
             ),

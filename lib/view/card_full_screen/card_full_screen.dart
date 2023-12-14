@@ -34,29 +34,32 @@ class _CardFullScreenState extends State<CardFullScreen> {
         ),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text(widget.title, style: TextStyle(fontSize: 24)),
+        title: Text(widget.title,
+            style: TextStyle(fontSize: 24, color: Colors.white)),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(widget.date,
-                    textAlign: TextAlign.justify,
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(widget.description,
-                textAlign: TextAlign.justify, style: TextStyle(fontSize: 24)),
-          ],
+      body: ListView(children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(widget.date,
+                      textAlign: TextAlign.justify,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(widget.description,
+                  textAlign: TextAlign.justify, style: TextStyle(fontSize: 18)),
+            ],
+          ),
         ),
-      ),
+      ]),
     );
   }
 }
